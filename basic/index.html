@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Research Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .resource {
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #6200ee;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Magic Research</h1>
+        <div class="resource">
+            <p>Mana: <span id="mana">100</span></p>
+            <p>Spell Power: <span id="spellPower">1</span></p>
+        </div>
+        <button class="button" onclick="research()">Research Spell</button>
+        <button class="button" onclick="castSpell()">Cast Spell</button>
+    </div>
+
+    <script>
+        let mana = 100;
+        let spellPower = 1;
+
+        function research() {
+            if (mana >= 10) {
+                mana -= 10;
+                spellPower += 1;
+                updateUI();
+            } else {
+                alert('Not enough mana to research!');
+            }
+        }
+
+        function castSpell() {
+            if (mana >= 5) {
+                mana -= 5;
+                alert(`You cast a spell with power ${spellPower}!`);
+                updateUI();
+            } else {
+                alert('Not enough mana to cast a spell!');
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('mana').textContent = mana;
+            document.getElementById('spellPower').textContent = spellPower;
+        }
+    </script>
+</body>
+</html>
